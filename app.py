@@ -2,9 +2,16 @@ import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
+import os
+import gdown 
+model_path = "malaria_model.h5"
 
-model = tf.keras.models.load_models("malaria_model.h5")
 
+url = "https://drive.google.com/file/d/1SnY3jhYBMaBtTIRnBv8WzS5c4XspJyk1/view?usp=sharing"
+
+if not os.path.exists(model_path):
+    gdown.download(url, model_path, quiet = False)
+model = tf.keras.models.load_model(model_path)
 st.title("Malaria Detection App")
 st.write("Upload cell imge to check if it's parasitized or uninfected")
 
