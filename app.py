@@ -13,9 +13,9 @@ if not os.path.exists(model_path):
     gdown.download(url, model_path, quiet = False)
 model = tf.keras.models.load_model(model_path)
 st.title("Malaria Detection App")
-st.write("Upload cell imge to check if it's parasitized or uninfected")
+st.write("Upload cell image to check if it's parasitized or uninfected")
 
-file = st.file_uploader("Selec an image", type = ["jpg", "png", "jpeg"])
+file = st.file_uploader("Select an image", type = ["jpg", "png", "jpeg"])
 
 if file is not None:
     img=image.load_img(file, target_size=(64,64))
